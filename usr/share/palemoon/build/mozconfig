@@ -1,0 +1,26 @@
+# Please see https://www.palemoon.org/redist.shtml for restrictions when using the official branding.
+ac_add_options --enable-official-branding
+export MOZILLA_OFFICIAL=1
+
+mk_add_options MOZ_CO_PROJECT=browser
+ac_add_options --enable-application=browser
+
+mk_add_options MOZ_OBJDIR=../pmbuild
+mk_add_options --prefix=/usr/share/palemoon/app%{_prefix}
+mk_add_options --libdir=/usr/share/palemoon/app%{_libdir}
+
+ac_add_options --enable-optimize="-O2 -msse2 -mfpmath=sse"
+ac_add_options --with-pthreads
+
+ac_add_options --disable-installer
+ac_add_options --disable-updater
+
+ac_add_options --enable-release
+ac_add_options --enable-devtools
+ac_add_options --enable-jemalloc
+ac_add_options --enable-shared-js
+
+ac_add_options --enable-strip
+
+ac_add_options --x-libraries=/usr/lib
+

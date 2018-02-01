@@ -1,0 +1,4 @@
+doc/README.md
+doc/version.txt
+inc/palemoon_ver.txt
+build/palemoon.spec

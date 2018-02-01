@@ -1,0 +1,40 @@
+#!/bin/sh
+# File: get-files
+case "${1}" in
+   rpm)
+if test -n "${package}"; then cd ${rpmbuilddir}/SOURCES/"${package}-${version}"; else cd $( pwd | sed -r -e 's/(SOURCES\/[^\/]+\/).*/\1/;' ); fi
+
+### for rpm
+find * -type d \
+   \( \
+      -regex 'usr\/share\/palemoon.*' -o \
+      -regex '.*icons.*' \
+   \) \
+   ! -regex '.*\/palemoon\/app' \
+   ! -regex '.*\/palemoon\/source' \
+   | sed -e 's/^/%dir \//;'
+
+find * -mindepth 1 ! -name "${package}.spec.$$.swp" \
+   \( \
+      ! -type d -o \
+      -regex '.*\/palemoon\/app' -o \
+      -regex '.*\/palemoon\/source' \
+   \) \
+   ! -regex '.*\/palemoon\/source\/.+' \
+   ! -regex '.*?.swp' \
+   ! -regex '.*?DEBIAN.*?' \
+   | sed -r -e '
+s/^/\//;
+s/((.*packaging\.txt|.*README\.(txt|md)))/%doc %attr(444, -, -) \1/;
+s/(.*CHANGELOG.*)/%doc \1/;
+s/(.*\.ini|.*xml)/%config %attr(666, -, -) \1/;
+s/(.*\.desktop)/%attr(666, -, -) \1/;
+'
+#s/\(.*\/app$\)/%attr(777, -, -) \1/;
+
+      ;;
+   *)
+      echo "FATAL ERROR: check ./pack or get-files. Please use [ rpm | deb ] option. Aborted." 1>&2
+      exit 1
+      ;;
+esac

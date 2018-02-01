@@ -1,0 +1,24 @@
+[Desktop Entry]
+Name=Palemoon
+GenericName=Web Browser
+Comment=Browse the World Wide Web
+Keywords=Internet;WWW;Browser;Web;Explorer;
+Exec=palemoon %u
+Terminal=false
+X-MultipleArgs=false
+Type=Application
+Icon=palemoon
+Categories=Network;WebBrowser;
+MimeType=text/html;text/xml;application/xhtml+xml;application/xml;application/rss+xml;application/rdf+xml;image/gif;image/jpeg;image/png;x-scheme-handler/http;x-scheme-handler/https;x-scheme-handler/ftp;x-scheme-handler/chrome;video/webm;application/x-xpinstall;
+StartupNotify=true
+Actions=NewWindow;NewPrivateWindow;
+
+[Desktop Action NewWindow]
+Name=Open new window
+Exec=palemoon -new-window
+OnlyShowIn=Unity;
+
+[Desktop Action NewPrivateWindow]
+Name=New private window
+Exec=palemoon -private-window
+OnlyShowIn=Unity;
