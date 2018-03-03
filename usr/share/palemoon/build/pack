@@ -58,6 +58,8 @@ packagespecfile="${package}-${version}/usr/share/${package}/build/${package}.spe
 . "${rpmbuilddir}/SOURCES/${package}-${version}/usr/share/${package}/build/get-sources"
 sed -n -e '1,/^\%files$/p;' "${rpmbuilddir}/SOURCES/${packagespecfile}" > "${rpmbuilddir}/SOURCES/${packagespecfile}.$$.swp" # removes files and changelog
 cd "${rpmbuilddir}/SOURCES/${package}-${version}"
+# custom for PM:
+mkdir "${rpmbuilddir}/SOURCES/usr/share/${package}/app" "${rpmbuilddir}/SOURCES/usr/share/${package}/source" 2>/dev/null
 "${rpmbuilddir}/SOURCES/${package}-${version}/usr/share/${package}/build/get-files" rpm >> "${rpmbuilddir}/SOURCES/${packagespecfile}.$$.swp"
 { printf '\n'; sed -n -e '/^\%changelog/,$p' "${rpmbuilddir}/SOURCES/${packagespecfile}" ; } >> "${rpmbuilddir}/SOURCES/${packagespecfile}.$$.swp"
 mv -f "${rpmbuilddir}/SOURCES/${packagespecfile}.$$.swp" "${rpmbuilddir}/SOURCES/${packagespecfile}"

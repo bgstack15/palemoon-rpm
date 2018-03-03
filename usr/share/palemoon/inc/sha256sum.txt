@@ -1,1 +1,3 @@
 88ff356ccf9f559de465ef825456396305937b155cecdadfdbc43e8dd59c773b  27.7.1_Release.tar.gz
+ffb1c92afc70eb2c9e751f06e47272c79c403114b79b01cdf4edccac2f78ad4b  27.8.0_Release.tar.gz
+

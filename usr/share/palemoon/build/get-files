@@ -10,8 +10,8 @@ find * -type d \
       -regex 'usr\/share\/palemoon.*' -o \
       -regex '.*icons.*' \
    \) \
-   ! -regex '.*\/palemoon\/app' \
    ! -regex '.*\/palemoon\/source' \
+   ! -regex '.*\/palemoon\/app' \
    | sed -e 's/^/%dir \//;'
 
 find * -mindepth 1 ! -name "${package}.spec.$$.swp" \

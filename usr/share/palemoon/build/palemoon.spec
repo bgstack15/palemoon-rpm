@@ -1,6 +1,6 @@
 %define dummy_package   0
 Name:		palemoon
-Version:	27.7.1
+Version:	27.8.0
 Release:	1
 Summary:	A file synchronization utility
 
@@ -29,6 +29,7 @@ BuildRequires:	yasm
 BuildRequires:	zlib-devel
 BuildRequires: pkgconfig(gtk+-2.0)
 BuildRequires: pkgconfig(vpx)
+BuildRequires: notification-daemon
 BuildRoot:     %{_tmppath}/%{name}-%{version}
 Requires:   hicolor-icon-theme
 Provides:   mimehandler(application/x-xpinstall)
@@ -47,7 +48,7 @@ while offering full customization and a growing collection of extensions
 and themes to make the browser truly your own.
 
 # %global debug_package %{nil}
-%global __os_install_post %( echo '%{__os_install_post}' | sed -e 's!/usr/lib[^[:space:]]*/brp-python-bytecompile[[:space:]].*$!!g' )
+%global __os_install_post %(echo '%{__os_install_post}' | sed -e 's!/usr/lib[^[:space:]]*/brp-python-bytecompile[[:space:]].*$!!g')
 
 %prep
 #%setup -q -n Pale-Moon-%{version}_Release
@@ -235,25 +236,27 @@ exit 0
 
 %files
 %dir /usr/share/palemoon
-%dir /usr/share/palemoon/build
 %dir /usr/share/palemoon/inc
-/usr/bin/palemoon
+%dir /usr/share/palemoon/build
 %attr(666, -, -) /usr/share/palemoon/palemoon.desktop
-/usr/share/palemoon/source
-/usr/share/palemoon/build/files-for-versioning.txt
-/usr/share/palemoon/build/get-sources
-/usr/share/palemoon/build/get-files
-/usr/share/palemoon/build/palemoon.spec
-/usr/share/palemoon/build/mozconfig
-/usr/share/palemoon/build/pack
 /usr/share/palemoon/doc
+/usr/share/palemoon/inc/sha256sum.txt
 /usr/share/palemoon/inc/palemoon_ver.txt
 /usr/share/palemoon/inc/icon_helper.sh
-/usr/share/palemoon/inc/sha256sum.txt
 %config %attr(666, -, -) /usr/share/palemoon/inc/palemoon-mimeinfo.xml
+/usr/share/palemoon/source
 /usr/share/palemoon/app
+/usr/share/palemoon/app/.keep
+/usr/share/palemoon/build/get-sources
+/usr/share/palemoon/build/get-files
+/usr/share/palemoon/build/pack
+/usr/share/palemoon/build/files-for-versioning.txt
+/usr/share/palemoon/build/palemoon.spec
+/usr/share/palemoon/build/mozconfig
+/usr/share/doc/palemoon/version.txt
 %doc %attr(444, -, -) /usr/share/doc/palemoon/README.md
+/usr/bin/palemoon
 
 %changelog
-* Tue Jan 30 2018 B Stack <bgstack15@gmail.com> 27.7.1-1
+* Tue Jan 30 2018 B Stack <bgstack15@gmail.com> 27.8.0-1
 - Initial rpm built.

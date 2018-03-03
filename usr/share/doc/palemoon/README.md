@@ -12,7 +12,7 @@ A build dependency is my [bgscripts](https://github.com/bgstack15/bgscripts) pac
 Download this wrapper package source and run the pack utility.
 
     package=palemoon
-    thisver=27.7.1-1
+    thisver=27.8.0-1
     mkdir -p ~/rpmbuild/{SOURCES,RPMS,BUILD,BUILDROOT,SPECS}
     cd ~/rpmbuild/SOURCES
     git clone https://github.com/bgstack15/palemoon-rpm "${package}-${thisver}"
@@ -41,3 +41,6 @@ When updating the version number, you can quickly pull up the list of files to e
 # Changelog
 2018-01-31 palemoon 27.7.1-1
 Initial rpm built.
+
+* Mar  2 2018 B Stack <bgstack15@gmail.com> 27.8.0-1
+- Rebase to upstream
