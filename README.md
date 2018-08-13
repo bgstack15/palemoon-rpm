@@ -1,1 +1,1 @@
-usr/share/doc/palemoon/README.md
+#movingtogitlab [https://gitlab.com/bgstack15/palemoon-rpm](https://gitlab.com/bgstack15/palemoon-rpm)
